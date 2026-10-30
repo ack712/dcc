@@ -1,0 +1,36 @@
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+
+def modInverse(e, phi):
+    for d in range(2, phi):
+        if (e * d) % phi == 1:
+            return d
+    return -1
+
+
+p = 7
+q = 11
+
+n = p * q
+phi = (p - 1) * (q - 1)
+
+for e in range(2, phi):
+    if gcd(e, phi) == 1:
+        break
+
+d = modInverse(e, phi)
+
+print("Public Key:", (e, n))
+print("Private Key:", (d, n))
+
+M = 3
+print("Original Message:", M)
+
+C = pow(M, e, n)
+print("Encrypted Message:", C)
+
+decrypted = pow(C, d, n)
+print("Decrypted Message:", decrypted)

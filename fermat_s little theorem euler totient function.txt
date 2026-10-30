@@ -1,0 +1,20 @@
+def gcd(a, b):
+
+    if (a == 0):
+        return b
+    return gcd(b % a, a)
+
+
+def euler_totient(n):
+    # Initialize the count of coprime numbers to 0
+    count = 0
+    # Iterate from 1 to n-1
+    for i in range(1, n):
+        # Check if i and n are coprime using gcd
+        if gcd(i, n) == 1:
+            count += 1
+    return count
+
+# Driver program
+for n in range(1, 76) :
+    print("Euler's Totient for", n, ":" , euler_totient(n))

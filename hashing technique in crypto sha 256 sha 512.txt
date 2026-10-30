@@ -1,0 +1,22 @@
+import hashlib
+# 1. Define your input text
+text = "Hello, World!"
+
+# 2. Encode the string to bytes and generate the hash
+# Hashing functions strictly require byte inputs, not raw strings.
+sha256_hash = hashlib.sha256(text.encode('utf-8')).hexdigest()
+
+print(f"Original Text: {text}")
+print(f"SHA-256 Hash : {sha256_hash}")
+
+
+data = b"Secure Data"  # The 'b' prefix directly creates a byte string
+
+# SHA-256 (Outputs a 64-character hex string)
+hash_256 = hashlib.sha256(data).hexdigest()
+
+# SHA-512 (Outputs a 128-character hex string)
+hash_512 = hashlib.sha512(data).hexdigest()
+print(f"Original Text: {data}")
+print(f"SHA-256 Hash : {hash_256}")
+print(f"SHA-512 Hash : {hash_512}")
